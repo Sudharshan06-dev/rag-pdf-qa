@@ -29,17 +29,17 @@ A **Retrieval-Augmented Generation (RAG)** application to intelligently answer q
 
 ## 🧪 Sample Q&A Output
 
-### ✅ Q: *What is Sudharshan's experience with cloud computing?*
+### ✅ Q: *What is User's experience with cloud computing?*
 
 **A:**
-> Sudharshan has experience working with cloud technologies such as AWS Lambda, API Gateway, SQS, and DynamoDB. He built cloud-native microservices and implemented event-driven architectures using S3 and SNS in a scalable email processing system.
+> User has experience working with cloud technologies such as AWS Lambda, API Gateway, SQS, and DynamoDB. He built cloud-native microservices and implemented event-driven architectures using S3 and SNS in a scalable email processing system.
 
 ---
 
 ### ✅ Q: *Summarize his academic background.*
 
 **A:**
-> Sudharshan is pursuing a Master's in Software Engineering at California State University, Fullerton with a GPA of 4.0.
+> User is pursuing a Master's in Software Engineering at California State University, Fullerton with a GPA of 4.0.
 
 ---
 
@@ -66,8 +66,8 @@ pip install -r requirements.txt
 ### 📄 4. Add Your Resumes
 ```bash
 resume_data/
-├── Sudharshan_AI_SoftwareEngineer_Resume.pdf
-├── Sudharshan_CloudEngineer_Resume.pdf
+├── User_AI_SoftwareEngineer_Resume.pdf
+├── User_CloudEngineer_Resume.pdf
 ...
 ```
 RUN THE APP
