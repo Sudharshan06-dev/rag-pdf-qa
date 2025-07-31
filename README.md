@@ -1,79 +1,116 @@
-# 🧠 RAG-Resume-QA
+# 📄 PDF Question Answering with RAG and Ollama (phi3:mini)
 
-A **Retrieval-Augmented Generation (RAG)** application to intelligently answer questions about a candidate’s resume using vector embeddings and a large language model (LLM). This project is built using LangChain, HuggingFace, and ChromaDB.
+This project implements a fast, local **RAG (Retrieval-Augmented Generation)** system to answer questions about any uploaded PDF using **Ollama-hosted LLMs** (like phi3:mini).
+
+The system supports **any PDF document**: resumes, research papers, policy documents, etc.
 
 ---
 
-## 📌 Features
+## 🚀 Features
 
-- 🔍 Upload multiple resumes and intelligently chunk them
-- 🧠 Embed content using `sentence-transformers` (HuggingFace)
-- 💬 Ask any question about the resume — get concise, accurate answers
-- 🛠️ Powered by RAG: Retrieval + LLM (Zephyr 7B via HuggingFace endpoint)
-- 👨‍💻 CLI-based interaction for rapid Q&A
+- 📄 Upload any PDF and ask context-aware questions
+- 🧠 Uses local LLMs via Ollama — no cloud LLM API needed
+- ⚡ Fast document chunking and embedding
+- 🧩 Vector search using Chroma
+- 💬 Smart prompting with LangChain's RAG pipeline
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Component      | Tech Used                            |
-|----------------|--------------------------------------|
-| LLM            | HuggingFace Zephyr-7B (HuggingFaceHub) |
-| Embeddings     | all-MiniLM-L6-v2 (HuggingFace)       |
-| Vector Store   | ChromaDB                             |
-| Document Loader| DedocPDFLoader (langchain-community) |
-| Framework      | LangChain                            |
-| Parsing        | PyPDF2 + Regex                       |
+| Component      | Technology Used                         |
+|----------------|------------------------------------------|
+| Embeddings     | `sentence-transformers/all-MiniLM-L6-v2` |
+| Vector Store   | `Chroma`                                 |
+| PDF Parsing    | `Pypdf`         |
+| Local LLM      | `Ollama` with `phi3:mini` |
+| Framework      | `LangChain`, `langchain-community`       |
 
 ---
 
-## 🧪 Sample Q&A Output
+## 🧠 Dynamic Prompting
 
-### ✅ Q: *What is User's experience with cloud computing?*
+The system uses a flexible prompt template that adapts to the content of the uploaded PDF.
 
-**A:**
-> User has experience working with cloud technologies such as AWS Lambda, API Gateway, SQS, and DynamoDB. He built cloud-native microservices and implemented event-driven architectures using S3 and SNS in a scalable email processing system.
+For example:
+
+- If you upload a resume, it can answer:  
+  > "What technologies has user worked with?"
+
+- If you upload a research paper, it can answer:  
+  > "Summarize the main contributions."
+
+- If you upload a policy doc:  
+  > "What are the security guidelines mentioned?"
 
 ---
 
-### ✅ Q: *Summarize his academic background.*
-
-**A:**
-> User is pursuing a Master's in Software Engineering at California State University, Fullerton with a GPA of 4.0.
-
----
-
----
-
-## 🚀 Setup Instructions
-
-### 🔧 1. Clone the Repository
+## ⚙️ Setup
 
 ```bash
-git clone https://github.com/yourusername/rag-resume-qa.git
-cd rag-resume-qa
-```
+🔧 1. Clone the repo
 
-### 🔐 2. Create a .env File
-```bash
-HUGGINGFACEHUB_API_TOKEN=your-huggingface-api-token
-```
+git clone https://github.com/Sudharshan06-dev/rag-resume.git
 
-### 📦 3. Install Dependencies
-```bash
+🧪 2. Create a virtual environment
+
+python3.11 -m venv venv
+source venv/bin/activate
+
+📦 3. Install dependencies
+
 pip install -r requirements.txt
-```
-### 📄 4. Add Your Resumes
-```bash
-resume_data/
-├── User_AI_SoftwareEngineer_Resume.pdf
-├── User_CloudEngineer_Resume.pdf
-...
-```
-RUN THE APP
-```bash
+
+4. 🦙 Ollama Setup
+
+This project runs fully locally using [Ollama](https://ollama.com/), which allows you to run high-performance LLMs on your own machine with no internet required for inference.
+
+# 1. Install Ollama (macOS)
+brew install ollama
+
+# 2. Start Ollama in the background (must be running)
+ollama serve
+
+# 3. Pull a lightweight model (for fast testing)
+ollama pull phi3:mini
+
+🔐 5. Load .env
+
+Ensure this line exists:
+
+# No key needed for Ollama, but you can add other settings here
+
+⸻
+
+▶️ Run the App
+
 python main.py
+
+You’ll see:
+
+✅ System is ready. Ask questions about the document (type 'exit' to quit).
+Q:
+
+Start typing questions about the uploaded PDF.
+
+⸻
+
 ```
 
-✅ System is ready. Ask questions about the resume (type 'exit' to quit).
-Q:
+📚 Example Use Cases
+
+- PDF Type	Example Questions
+- Resume	“What cloud tools has this person used?”
+- Research Paper	“Summarize the methodology section.”
+- Company Policy	“What are the leave policies?”
+- Technical Manual	“How to configure the database?”
+
+
+🧠 Future Improvements
+- Responsive UI for drag-and-drop file uploads
+- File type support beyond PDF (DOCX, Markdown)
+- Multi-language support via translation
+
+
+🧑‍💻 Created By
+Sudharshan Madhavan | Final Year M.S. Software Engineering @ CSUF
