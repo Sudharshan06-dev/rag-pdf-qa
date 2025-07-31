@@ -1,0 +1,10 @@
+langchain==0.2.16
+langchain-community==0.2.16
+langchain-core==0.2.38
+langchain-huggingface==0.0.3
+sentence-transformers==2.6.1
+transformers==4.40.1
+huggingface_hub==0.23.0
+chromadb==0.4.24
+pypdf
+python-dotenv
